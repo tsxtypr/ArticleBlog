@@ -55,9 +55,15 @@ class Article(models.Model):
         verbose_name = '文章'
         verbose_name_plural = verbose_name
 
+USER_TYPE=(
+    (1,"游客"),
+    (2,'博主'),
+)
 class User(models.Model):
     username=models.CharField(max_length=32)
     password=models.CharField(max_length=50)
+    email=models.EmailField()
+    user_type=models.IntegerField(choices=USER_TYPE,default=1)
     class Meta:
         db_table='user'
 
